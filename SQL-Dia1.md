@@ -6,23 +6,23 @@ Join - A união de dados em tabeals diferentes.
 
 - Comandos
 
-![SQL_Comandos](SQL_Comandos.png)
+![SQL_Comandos](Imagens/SQL_Comandos.png)
 
 - Juntando colunas
 
-![Concatenando](Concatenando_colunas.png)
+![Concatenando](Imagens/Concatenando_colunas.png)
 
 - Clasulas Where
 
-![Clasulas Where](Where.png)
+![Clasulas Where](Imagens/Where.png)
 
 - No caso abaixo o certo seria usar o Having
 
-![Having](Having.png)
+![Having](Imagens/Having.png)
 
 - Case é util quando queremos ja converter valores para outro tipo.
 
-![Case](Case.png)
+![Case](Imagens/Case.png)
 
 Por exemplo, digamos que tem sexo 1 e 2, mas o 1 é masculino e o 2 feminito.
 

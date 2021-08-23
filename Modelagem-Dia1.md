@@ -20,7 +20,7 @@ Existem ao todo 5 Formas Normais, porém o uso da 4FN e 5 FN são bem incomuns e
 
 ### Comandos SQL
 Abaixo temos um quadro com os principais comando quando trabalhamos com SQL:
-![SQL_Comandos](SQL_Comandos.png)
+![SQL_Comandos](Imagens/SQL_Comandos.png)
 
 #### DCL - Data Control Language
 Aqui temos um subgrupo para aspectos de autorização de acesso aos dados e licenças de usuários.
@@ -46,3 +46,13 @@ Ex: CREATE DATABASE banco;
 Ex: ALTER TABLE cliente ADD telefone VARCHAR(14);
 - __DROP__: Serve para deletar bancos e tabelas
 Ex: DROP TABLE cliente;
+
+#### DML - Data Manipulation Language
+Subgrupo de insersão, alteração e deleção de registros na tabela.
+
+- __INSERT__: Serve para adicionar registro em uma tabela.
+Ex: INSERT INTO cliente(nome, telefone) VALUES ('José', '1234-5678')
+- __UPDATE__: Altera um registro na tabela com base na chave primária.
+Ex: UPDATE cliente SET nome='Maria' WHERE idcliente = 1;
+- __DELETE__: Exclui um registro na tabela com base na chave primária.
+DELETE FROM cliente WHERE idcliente = 1;
