@@ -1,5 +1,11 @@
 # SQL
 
+## Modelo Entidade Relacionamento - MER
+
+Quando trabalhamos com o MER devemos nos atentar a alguns pontos como:
+- nome das entidades sempre em minúsculo, escolhendo entre singular ou plural
+- sempre manter um padrão para a nomeção de chaves secundárias. Ex: fk_tabela_1
+- Evitar usar chaves primárias que não sejam geradas pelo banco, pois existe possibilidade de erro de digitação por parte do usuário.
 ## Normalização de dados
 
 #### 1ª Forma Normal (1FN)
