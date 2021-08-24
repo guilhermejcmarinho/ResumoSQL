@@ -70,7 +70,7 @@ Subgrupo de consulta SQL, sendo o mais utilizado. Aqui temos apenas o comando __
 
 Ex: SELECT * FROM clientes;
 
-Quando queremos aplicar um filtro no nosso SELECT utilizamos a cláusula WHERE. Esse por sua vez pode ser utilizado com as estruturas: > < => =< <> = IN BETWEEN..AND.. LIKE AND OR NOT
+Quando queremos aplicar um filtro no nosso SELECT utilizamos a cláusula WHERE. Esse por sua vez pode ser utilizado com as estruturas: >, <, =>, =<, <>, =, IN, BETWEEN..AND.., LIKE, AND, OR, NOT
 
 ## Funções de agregação
 As funções de agregação servem para pegar informações de resultados únicos em uma coluna. Um exemplo disso seria: maior salário em uma empresa, quantidade de clientes, etc.
