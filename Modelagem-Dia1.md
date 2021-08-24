@@ -94,14 +94,14 @@ Algumas dessas funções são:
 
 __OBS¹:__ Se ao usar uma dessas funções, ela não estiver sozinha no SELECT, será necessário utilizar um GROUP BY em outro elemento da consulta.
 
-__OBS²:__ Caso seja necessário aplicar um filtro nas funções de agragação, utilizamos o comando HAVING, que possui a mesma função do WHERE.
+__OBS²:__ Caso seja necessário aplicar um filtro nas funções de agregação, utilizamos o comando HAVING, que possui a mesma função do WHERE.
 
 Ex: SELECT departamento, SUM(salario) GROUP BY departamento HAVING SUM(salario) >= 1000;
 
 ## Funções de agrupamento e ordenação
 
 ### GROUP BY
-O GROUP BY é utillizado para agrupar elementos de um mesmo tipo. Um exemplo prático facil de imaginar é agrupamento por ano.
+O GROUP BY é utillizado para agrupar elementos de um mesmo tipo. Um exemplo prático e fácil de imaginar é agrupamento por ano.
 
 Ex: SELECT ano, loja, faturamento FROM vendas GROUP BY ano;
 
