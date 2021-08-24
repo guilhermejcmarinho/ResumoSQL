@@ -130,3 +130,96 @@ OBS: Para retornar o nome em português colocar antes do select o comando: _SET 
 - __Time_to_sec(hora)__: converte horas em segundos  
 - __Hour/Minute/Second(hora)__: Retorna apenas a HH ou MM ou SS de um dado
 Ex: SELECT HOUR(14:15:16), MINUTE(14:45:18), SECOND(14:15:16) -> Retornaria 14, 45 ou 18
+
+## JOINS
+
+Joins são recursos que permitem acessar dados de diferentes tabelas. Os mais importantes são:
+
+- __Produto Cartesiano__: Uma junção de produto cartesiano é uma junção entre duas tabelas que origina uma terceira tabela constituída por todos os elementos da primeira combinadas com todos os elementos da segunda.
+```
+SELECT c.id, c.nome, c.data_nascimento, c.telefone, p.cargo
+FROM clientes AS c, pedidos AS p
+WHERE c.id_profissao = p.id;
+```
+- __Inner Join__: Uma junção interna é caracterizada por uma consulta que retorna apenas os dados que atendem às condições de junção, isto é, quais linhas de uma tabela se relacionam com as linhas de outras tabelas. Para isso utilizamos a cláusula ON, que é semelhante à cláusula WHERE.
+```
+SELECT c.id, c.nome, c.data_nascimento, c.telefone, p.cargo
+FROM clientes AS c INNER JOIN pedidos AS p
+ON c.id_profissao = p.id;
+```
+- __Outer Join__: Uma junção externa é uma consulta que não requer que os registros de uma tabela possuam registros equivalentes em outra. 
+Este tipo de junção se subdivide dependendo da tabela do qual admitiremos os registros que não possuem correspondência: a tabela da esquerda, a direita ou ambas.
+
+    - __Left Outer Join__: O resultado desta consulta sempre contém todos os registros da tabela esquerda (ou seja, a primeira tabela mencionada na consulta), mesmo quando não exista registros correspondentes na tabela direira. 
+    Desta forma, esta consulta retorna todos os valores da tabela esquerda com os valores da tabela direita correspondente, ou quando não há correspondência retorna um valor NULL.
+    ```
+    SELECT * FROM clientes
+    LEFT OUTER JOIN pedidos
+    ON clientes.id_pedido = pedidos.id;
+    ```
+    - __Right Outer Join__: Esta consulta é inversa à anterior e retorna sempre todos os registros da tabela à direita (a segunda tabela mencionada na consulta), mesmo se não existir registro correspondente na tabela à esquerda. 
+    Nestes casos, o valor NULL é retornado quando não há correspondência.
+    ```
+    SELECT * FROM clientes
+    RIGHT OUTER JOIN pedidos
+    ON clientes.id_pedido = pedidos.id;
+    ```
+
+    - __Full Outer Join__: Esta consulta traz então os dados de ambas tabelas de acordo com suas correspondências e
+    caso não tenha preenche o valor com NULL.
+    ```
+    SELECT * FROM clientes
+    FULL OUTER JOIN pedidos
+    ON clientes.id_pedido = pedidos.id;
+    ```
+
+![Joins Resultados](Imagens/Joins_Resultado.png)
+
+Sendo assim em resumo temos:
+
+__Junção de produto cartesiano__ é uma junção entre duas tabelas que origina uma terceira tabela constituída por todos os elementos da primeira tabela combinada com todos os elementos da segunda.
+
+__Junção Interna (Inner Join)__ todas as linhas de uma tabela se relacionam com todas as linhas de outras tabelas se elas tiverem ao menos 1 campo em comum. 
+
+__Junção Externa Esquerda (Left Outer Join)__ traz todos os registros da tabela esqueda mesmo quando não exista registros correspondentes na tabela direita. 
+
+__Junção Externa Direita (Right Outer Join)__ traz todos os registros da tabela direita mesmo quando não exista registros correspondentes na tabela esquerda. 
+
+__Junção Externa Completa (Full Outer Join)__ apresenta todos os dados das tabelas à esquerda e à direita, mesmo que não possuam correspondência em outra tabela.
+
+![Joins](Imagens/SQL_Joins.jpeg)
+
+## Subconsultas
+
+Uma subconsulta nada mais é do que uma instrução SELECT dentro de outro SELECT que retorna algumas colunas específicas. Uma subconsulta SQL é chamada de consulta interna, enquanto a consulta que contém a subconsulta é chamada de consulta externa.
+
+Vale lembrar que a consulta interna (subconsulta), é executada primeiro e retorna um conjunto de resultados, esses resultados serão usados na próxima consulta.
+
+- Exemplo 1
+```
+SELECT nome, sobrenome
+FROM funcionarios
+WHERE id_escritorio IN (SELECT id FROM escritorios WHERE pais = 'Brasil');
+```
+No exemplo acima, estamos selecionando os campos 'nome' e 'sobrenome' da tabela de funcionário onde o id do escritório esteja dentro do resultado da subconsulta.
+
+- Exemplo 2
+```
+SELECT f.nome, f.sobrenome, e.pais, p.salario
+FROM pagamentos AS p, funcionarios AS f, escritorios AS e
+WHERE f.id_escritorio = e.id
+AND f.id = p.id_funcionario
+AND salario = (SELECT MAX(salario) FROM pagamentos)
+```
+
+No exemplo acima, estamos efetuando uma junção de tabela por produto cartesiano, utilizando uma função agregada e uma subconsulta para ver quem tem o mair salário na empresa.
+
+- Exemplo 3
+```
+SELECT f.nome, f.sobrenome, e.pais, p.salario
+FROM pagamentos AS p, funcionarios AS f, escritorios AS e
+WHERE f.id_escritorio = e.id
+AND f.id = p.id_funcionario
+AND salario < (SELECT AVG(salario) FROM pagamentos)
+```
+No exemplo acima, estamos efetuando uma junção de tabela por produto cartesiano, utilizando uma função agregada e uma subconsulta para ver quem recebe menos que a média salarial da empresa.
