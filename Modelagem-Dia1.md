@@ -103,3 +103,24 @@ Ex: SELECT ano, loja, faturamento FROM vendas GROUP BY ano;
 Esse comando faz a ordenação dos dados em ordem crescente ou descresente. Quando não específicado o padrão é crescente.
 
 Ex: SELECT * FROM vendas ORDER BY loja;
+
+## Funções de Data/Hora
+Essas funções são nativas do SQL e servem para facilitar o desenvolvimento. São funções que funcionam mesmo sem uma base de dados.
+
+- __Curdate()__: retorna data atual no formato (aaaa-mm-dd)
+- __Curtime()__: retorna a hora atual no formato (hh:mm:ss)
+- __Date_add(data, intervalo)__: adiciona um intervalo de dias/horas/anos/etc a data passada inicialmente.
+- __Date_sub(data, intervalo)__: subtrai um intervalo de dias/horas/anos/etc a data passada inicialmente.
+- __DateDiff(expressão1, expressão2)__: calcula a diferença entre duas datas.
+- __DateFormat(data, formato)__: altera a formatação apresentada da data. Ex: SELECT date_format(Curdate(), '%d/%m/%a')
+- __DayName(data)__: retorna o nome do dia da semana.
+
+OBS: Para retornar o nome em português colocar antes do select o comando: _SET lc_time_names = 'pt-BR';_
+- __DayofMonth(data)__: retorna apenas o dia do mês
+- __From_Days(n)__: retorna a data após N dias
+- __Now()__: retorna data e hora atual
+- __Time()__: retorna apenas a hh:mm:ss de um dado
+- __Sec_to_time(segundos)__: converte segundos em horas 
+- __Time_to_sec(hora)__: converte horas em segundos  
+- __Hour/Minute/Second(hora)__: Retorna apenas a HH ou MM ou SS de um dado
+Ex: SELECT HOUR(14:15:16), MINUTE(14:45:18), SECOND(14:15:16) -> Retornaria 14, 45 ou 18
